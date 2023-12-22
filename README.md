@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/mindarjs"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.3.1/aframe/build/aframe-ar.js"></script>
+</head>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,6 +33,32 @@
       <a-animation attribute="rotation" dur="3000" to="0 360 0" repeat="indefinite"></a-animation>
       <!-- Анімація підняття прапора -->
       <a-animation attribute="position" dur="2000" to="0 6 0" repeat="1" direction="alternate" easing="ease-in-out" begin="flagAnimation"></a-animation>
+   
+ 
+  <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+   
+    <a-marker preset="custom" type="pattern" url="../Apple_Store_logo.svg">
+ 
+    </a-marker>
   </a-scene>
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+     
+      MindAR.initialize();
+
+     
+      MindAR.trackMarker({
+        markerImageUrl: "../Apple_Store_logo.svg",
+        onMarkerFound: function () {
+          
+          console.log("MindAR Marker Found");
+        },
+        onMarkerLost: function () {
+         
+          console.log("MindAR Marker Lost");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
