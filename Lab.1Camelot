@@ -30,6 +30,32 @@
       <a-animation attribute="rotation" dur="3000" to="0 360 0" repeat="indefinite"></a-animation>
       <!-- Анімація підняття прапора -->
       <a-animation attribute="position" dur="2000" to="0 6 0" repeat="1" direction="alternate" easing="ease-in-out" begin="flagAnimation"></a-animation>
+
+ <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+   
+    <a-marker preset="custom" type="pattern" url="../Apple_Store_logo.svg">
+ 
+    </a-marker>
   </a-scene>
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+     
+      MindAR.initialize();
+
+     
+      MindAR.trackMarker({
+        markerImageUrl: "../Apple_Store_logo.svg",
+        onMarkerFound: function () {
+          
+          console.log("MindAR Marker Found");
+        },
+        onMarkerLost: function () {
+         
+          console.log("MindAR Marker Lost");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+
